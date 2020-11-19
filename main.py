@@ -3,12 +3,29 @@ from random import randint
 from PyQt5 import uic
 from PyQt5.QtWidgets import QWidget, QApplication
 from PyQt5.QtGui import QColor, QPainter
+from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ex(QWidget):
+class Ui_Form(object):
+    def setupUi(self, Form):
+        Form.setObjectName("Form")
+        Form.resize(582, 502)
+        self.pushButton = QtWidgets.QPushButton(Form)
+        self.pushButton.setGeometry(QtCore.QRect(10, 0, 93, 28))
+        self.pushButton.setObjectName("pushButton")
+
+        self.retranslateUi(Form)
+        QtCore.QMetaObject.connectSlotsByName(Form)
+
+    def retranslateUi(self, Form):
+        _translate = QtCore.QCoreApplication.translate
+        Form.setWindowTitle(_translate("Form", "Form"))
+        self.pushButton.setText(_translate("Form", "Кнопка"))
+
+class Ex(QWidget,Ui_Form):
     def __init__(self):
         super().__init__()
-        uic.loadUi('UI.ui', self)
+        self.setupUi(self)
         self.is_draw = False
         self.initUi()
 
